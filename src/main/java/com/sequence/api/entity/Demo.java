@@ -3,8 +3,10 @@ package com.sequence.api.entity;
 import com.sequence.api.base.AbstractEntity;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.GenericGenerator;
 
 import java.io.Serial;
+import java.util.UUID;
 
 @Getter
 @Setter
@@ -19,9 +21,10 @@ public class Demo extends AbstractEntity {
     private static final long serialVersionUID = -5418215431736488195L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GenericGenerator(name = "uuid_v1_time_swap", strategy = "com.sequence.api.utils.UUIDV1WithTimeSwapGenerationStrategy")
+    @GeneratedValue(generator = "uuid_v1_time_swap")
     @Column(name = "id", nullable = false)
-    private Long id;
+    private UUID id;
 
     @Column(name = "name")
     private String name;
