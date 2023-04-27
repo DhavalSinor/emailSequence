@@ -13,7 +13,7 @@ import java.util.Map;
 
 @RestController
 @RequestMapping("/api/v1/mail")
-public class TestController extends AbstractController {
+public class TestController extends AbstractController  {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(TestController.class);
 
