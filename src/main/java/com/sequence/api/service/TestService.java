@@ -1,6 +1,8 @@
 package com.sequence.api.service;
 
 import com.sequence.api.base.AbstractService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -10,6 +12,8 @@ import java.util.Map;
  */
 @Service
 public class TestService extends AbstractService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TestService.class);
 
     private final DemoService demoService;
 
