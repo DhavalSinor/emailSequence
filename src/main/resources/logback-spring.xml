@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration>
+
+<configuration scan="true">
+    <springProfile name="!prod">
+        <contextName>Development</contextName>
+        <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>%contextName %d{MMM dd HH:mm:ss} %d %-4relative %-5level %logger{35}\(%line\) %X{userEmail} - %m%n%xEx</pattern>
+                </layout>
+            </encoder>
+        </appender>
+        <logger name="com" level="info" additivity="false">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+        <logger name="com.cadogan.file" level="debug" additivity="false">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+        <logger name="org" level="info" additivity="false">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+    </springProfile>
+    <springProfile name="prod">
+        <contextName>Production</contextName>
+        <appender name="consoleAppender" class="ch.qos.logback.core.ConsoleAppender">
+            <encoder class="ch.qos.logback.core.encoder.LayoutWrappingEncoder">
+                <layout class="ch.qos.logback.classic.PatternLayout">
+                    <pattern>%contextName %d{MMM dd HH:mm:ss} %d %-4relative %-5level %logger{35}\(%line\) %X{userEmail} - %m%n%xEx</pattern>
+                </layout>
+            </encoder>
+        </appender>
+        <logger name="com" level="error" additivity="false">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+        <logger name="com.cadogan.file" level="info" additivity="false">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+        <logger name="org" level="error" additivity="false">
+            <appender-ref ref="consoleAppender"/>
+        </logger>
+    </springProfile>
+</configuration>
