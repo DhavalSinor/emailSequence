@@ -9,7 +9,7 @@ import java.util.concurrent.BlockingQueue;
 /**
  * @author Nawaz
  */
-public class AEmailHandler {
+public abstract class AEmailHandler {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(AEmailHandler.class);
 
