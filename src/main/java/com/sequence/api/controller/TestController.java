@@ -25,7 +25,7 @@ public class TestController extends AbstractController  {
 
     @GetMapping("/test")
     public ResponseDTO<?> testApi() throws Throwable {
-        LOGGER.debug("FileProcessingController (testApi()) Execution ->");
+        LOGGER.debug("TestController (testApi()) Execution ->");
         return generateResponse(testService.testDemoTable());
     }
 }
