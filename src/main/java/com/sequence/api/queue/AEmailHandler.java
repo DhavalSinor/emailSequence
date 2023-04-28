@@ -1,6 +1,9 @@
 package com.sequence.api.queue;
 
 import com.sequence.api.dto.SequenceHandlerDTO;
+import com.sequence.api.service.EmailService;
+import com.sequence.api.service.TransactionService;
+import com.sequence.api.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -19,9 +22,18 @@ public abstract class AEmailHandler {
 
     protected final BlockingQueue<SequenceHandlerDTO> checkThirdEmailQueue;
 
-    public AEmailHandler(BlockingQueue<SequenceHandlerDTO> checkFirstEmailQueue, BlockingQueue<SequenceHandlerDTO> checkSecondEmailQueue, BlockingQueue<SequenceHandlerDTO> checkThirdEmailQueue) {
+    protected final UserService userService;
+
+    protected final EmailService emailService;
+
+    protected final TransactionService transactionService;
+
+    public AEmailHandler(BlockingQueue<SequenceHandlerDTO> checkFirstEmailQueue, BlockingQueue<SequenceHandlerDTO> checkSecondEmailQueue, BlockingQueue<SequenceHandlerDTO> checkThirdEmailQueue, UserService userService, EmailService emailService, TransactionService transactionService) {
         this.checkFirstEmailQueue = checkFirstEmailQueue;
         this.checkSecondEmailQueue = checkSecondEmailQueue;
         this.checkThirdEmailQueue = checkThirdEmailQueue;
+        this.userService = userService;
+        this.emailService = emailService;
+        this.transactionService = transactionService;
     }
 }

@@ -8,17 +8,20 @@ import org.hibernate.annotations.GenericGenerator;
 import java.io.Serial;
 import java.util.UUID;
 
+/**
+ * @author Nawaz
+ */
 @Getter
 @Setter
 @Entity
-@Table(name = "demo")
+@Table(name = "transaction")
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class Demo extends AbstractEntity {
+public class Transaction extends AbstractEntity {
 
     @Serial
-    private static final long serialVersionUID = -5418215431736488195L;
+    private static final long serialVersionUID = -5054891184588101635L;
 
     @Id
     @GenericGenerator(name = "uuid_v1_time_swap", strategy = "com.sequence.api.utils.UUIDV1WithTimeSwapGenerationStrategy")
@@ -26,7 +29,16 @@ public class Demo extends AbstractEntity {
     @Column(name = "id", nullable = false)
     private UUID id;
 
-    @Column(name = "name")
-    private String name;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Email email;
+
+    @Column(name = "is_read")
+    private Boolean isRead;
+
+    @Column(name = "is_reply")
+    private Boolean isReply;
 
 }
